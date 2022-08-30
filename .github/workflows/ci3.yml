@@ -1,0 +1,41 @@
+name: build-kernel3
+
+on:
+  workflow_dispatch:
+
+jobs:
+  # Label of the container job
+  container-job:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    environment: TEL
+    # Docker Hub image that `container-job` executes in
+    container: panchajanya1999/archlinux:latest
+    steps:
+      # Downloads a copy of the code in your repository before running CI tests
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Checkout kernel
+        uses: actions/checkout@v3
+        with:
+          repository: pix106/android_kernel_xiaomi_southwest-4.19
+          ref: main
+          path: kernel
+    
+      - name: build
+        run: |
+          echo "LC_ALL=en_US.UTF-8" | sudo tee -a /etc/environment
+          echo "en_US.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen
+          echo "LANG=en_US.UTF-8" | sudo tee -a /etc/locale.conf
+          sudo locale-gen en_US.UTF-8
+          curl -fsSL "https://pkgbuild.com/~morganamilo/pacman-static/x86_64/bin/pacman-static" -o pacman-static && chmod +x pacman-static && mv pacman-static /usr/bin/
+          pacman-static -Syu --needed --noconfirm dpkg
+          wget http://archive.ubuntu.com/ubuntu/pool/main/n/ncurses/libtinfo5_6.0+20160213-1ubuntu1_amd64.deb -O libtinfo5.deb && dpkg-deb -R libtinfo5.deb libtinfo && cp libtinfo/lib/x86_64-linux-gnu/libtinfo.so.5.9 /usr/lib/libtinfo.so.5
+          
+          cd kernel
+          cp ../build.sh .
+          bash build.sh lmi
+          #bash build2.sh
+        env:
+          TOKEN: ${{secrets.TOKEN}}
+          CHAT_ID: ${{secrets.CHAT_ID}}
