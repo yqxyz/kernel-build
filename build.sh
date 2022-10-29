@@ -207,9 +207,9 @@ START=$(date +"%s")
 	if [ -d ${KERNEL_DIR}/clang ];
 	   then
            make O=out CC=clang ARCH=arm64 ${DEFCONFIG}
-           cp ../pix_docker.config out/.config
-           cp ../pixMakefile kernel/Makefile
-           cp ../pixxt_qtaguid.c net/netfilter/xt_qtaguid.c
+          # cp ../pix_docker.config out/.config
+          # cp ../pixMakefile kernel/Makefile
+          # cp ../pixxt_qtaguid.c net/netfilter/xt_qtaguid.c
 	       make -kj$(nproc --all) O=out \
 	       ARCH=arm64 \
 	       LLVM=1 \
@@ -238,9 +238,9 @@ START=$(date +"%s")
         elif [ -d ${KERNEL_DIR}/clangB ];
            then
            make O=out CC=clang ARCH=arm64 ${DEFCONFIG}
-           cp ../pix_docker.config out/.config
-           cp ../pixMakefile kernel/Makefile
-           cp ../pixxt_qtaguid.c net/netfilter/xt_qtaguid.c
+          # cp ../pix_docker.config out/.config
+          # cp ../pixMakefile kernel/Makefile
+          # cp ../pixxt_qtaguid.c net/netfilter/xt_qtaguid.c
            make -kj$(nproc --all) O=out \
 	       ARCH=arm64 \
 	       LLVM=1 \
