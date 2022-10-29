@@ -15,7 +15,7 @@ DEVICE2=lavender
 DEFCONFIG=lavender_defconfig
 MODEL=Redmi Note 7
 VERSION=BETA
-curl https://github.com/projects-nexus/nexus_kernel_xiaomi_sm8250/commit/d982f028426863ebcc1c0c247bd855434b4e9826.patch | git am
+#curl https://github.com/projects-nexus/nexus_kernel_xiaomi_sm8250/commit/d982f028426863ebcc1c0c247bd855434b4e9826.patch | git am
 elif [ "${DEVICE}" = "alioth" ]; then
 DEVICE2=alioth
 DEFCONFIG=vendor/alioth_defconfig
