@@ -62,7 +62,7 @@ LINKER=ld.lld
 
 ##----------------------------------------------------------##
 # Specify compiler [ proton, atomx, eva, aosp ]
-COMPILER=aosp
+COMPILER=sdclang
 
 ##----------------------------------------------------------##
 # Clone ToolChain
@@ -207,6 +207,9 @@ START=$(date +"%s")
 	if [ -d ${KERNEL_DIR}/clang ];
 	   then
            make O=out CC=clang ARCH=arm64 ${DEFCONFIG}
+           cp ../pix_docker.config out/.config
+           cp ../pixMakefile kernel/Makefile
+           cp ../pixxt_qtaguid.c net/netfilter/xt_qtaguid.c
 	       make -kj$(nproc --all) O=out \
 	       ARCH=arm64 \
 	       LLVM=1 \
@@ -218,6 +221,9 @@ START=$(date +"%s")
 	elif [ -d ${KERNEL_DIR}/gcc64 ];
 	   then
            make O=out ARCH=arm64 ${DEFCONFIG}
+           cp ../pix_docker.config out/.config
+           cp ../pixMakefile kernel/Makefile
+           cp ../pixxt_qtaguid.c net/netfilter/xt_qtaguid.c
 	       make -kj$(nproc --all) O=out \
 	       ARCH=arm64 \
 	       CROSS_COMPILE_COMPAT=arm-eabi- \
@@ -239,8 +245,7 @@ START=$(date +"%s")
 	       ARCH=arm64 \
 	       LLVM=1 \
 	       LLVM_IAS=1 \
-	       LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gas/linux-x86 \
-           LINUX_GCC_CROSS_COMPILE_COMPAT_PREBUILTS_BIN=prebuilts/gas/linux-x86 \
+	       CLANG_TRIPLE=aarch64-linux-gnu- \
 	       CROSS_COMPILE=aarch64-linux-android- \
 	       CROSS_COMPILE_COMPAT=arm-linux-androideabi- \
 	       V=$VERBOSE 2>&1 | tee error.log
