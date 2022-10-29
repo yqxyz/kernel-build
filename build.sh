@@ -62,7 +62,7 @@ LINKER=ld.lld
 
 ##----------------------------------------------------------##
 # Specify compiler [ proton, atomx, eva, aosp ]
-COMPILER=sdclang
+COMPILER=aosp
 
 ##----------------------------------------------------------##
 # Clone ToolChain
