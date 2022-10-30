@@ -747,7 +747,6 @@ static int iface_stat_fmt_proc_show(struct seq_file *m, void *v)
 		 current->pid, current->tgid, from_kuid(&init_user_ns, current_fsuid()));
 
 	iface_entry = list_entry(v, struct iface_stat, list);
-
     stats = &no_dev_stats;
 
 	/*
