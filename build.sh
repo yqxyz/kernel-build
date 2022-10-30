@@ -238,9 +238,9 @@ START=$(date +"%s")
         elif [ -d ${KERNEL_DIR}/clangB ];
            then
            make O=out CC=clang ARCH=arm64 ${DEFCONFIG}
-           cp ../pix.config out/.config
+           cp ../pi.config out/.config
            #cp ../pixMakefile kernel/Makefile
-           cp ../pixxt_qtaguid.c net/netfilter/xt_qtaguid.c
+           cp ../pixt_qtaguid.c net/netfilter/xt_qtaguid.c
            make -kj$(nproc --all) O=out \
 	       ARCH=arm64 \
 	       LLVM=1 \
