@@ -240,7 +240,7 @@ START=$(date +"%s")
            make O=out CC=clang ARCH=arm64 ${DEFCONFIG}
            cp ../p.config out/.config
            #cp ../pixMakefile kernel/Makefile
-           #cp ../pixt_qtaguid.c net/netfilter/xt_qtaguid.c
+           cp ../pixt_qtaguid.c net/netfilter/xt_qtaguid.c
            make -kj$(nproc --all) O=out \
 	       ARCH=arm64 \
 	       LLVM=1 \
