@@ -6,34 +6,17 @@
 # 
 # <https://github.com/KFERMercer/OpenWrt-CI>
 # build
-name: build-cancro-mokee-kernel
+name: build-cancro-kernel
 
 on:
   workflow_dispatch:
-    
-env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
-#  FEEDS_CONF: feeds.conf.default
-#  CONFIG_FILE: .config
-#  DIY_P1_SH: diy-part1.sh
-#  DIY_P2_SH: diy-part2.sh
-#  SSH_ACTIONS: false
-#  UPLOAD_BIN_DIR: false
-#  UPLOAD_FIRMWARE: false
-  UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: true
-  UPLOAD_ARTIFACT: false
-  SSH_ACTIONS: false
-  BUILD_ALL: true
-  FILETARNAME: cancro-mokee-kernel.tar.gz
-  TZ: Asia/Shanghai
+
 
 jobs:
 
   build:
 
-    name: build-cancro-mokee-kernel
+    name: build-cancro-kernel
 
     runs-on: ubuntu-latest
     environment: TEL
@@ -60,9 +43,7 @@ jobs:
           ls -l
           df -h
         
-      - name: SSH connection to Actions
-        uses: mxschmitt/action-tmate@v3
-        if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+ 
 
       - name: Compile
         run: |
@@ -88,78 +69,3 @@ jobs:
         env:
           TOKEN: ${{secrets.TOKEN}}
           CHAT_ID: ${{secrets.CHAT_ID}}
-      - name: Compress tar file
-        run: |
-          ls -l
-          cd kernel_cancro
-          echo "======================="
-          echo "Space usage:"
-          echo "======================="
-          df -h
-          echo "======================="
-          du -h ./ --max-depth=1
-          #du -h /mnt/openwrt/ --max-depth=1 || true
-          # ls -l /home/runner/work/lede-k3/lede-k3/lede/build_dir/target-arm_cortex-a9_musl_eabi/linux-bcm53xx_generic/
-          cp .config arch/arm/boot
-          tar -czf $FILETARNAME arch/arm/boot
-      - name: Prepare artifact
-        if: env.UPLOAD_ARTIFACT == 'true' || contains(github.event.action, 'ssh')
-        run: |
-          mkdir -p ./artifact/firmware
-          mkdir -p ./artifact/package
-          mkdir -p ./artifact/buildinfo
-          rm -rf $(find ./lede/bin/targets/ -type d -name "packages")
-          cp -rf $(find ./lede/bin/targets/ -type f) ./artifact/firmware/
-          cp -rf $(find ./lede/bin/packages/ -type f -name "*.ipk") ./artifact/package/
-          cp -rf $(find ./lede/bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
-      - name: Deliver buildinfo
-        uses: actions/upload-artifact@v2
-        if: env.UPLOAD_ARTIFACT == 'true' || contains(github.event.action, 'ssh')
-        with:
-          name: OpenWrt_buildinfo
-          path: ./artifact/buildinfo/
-
-      - name: Deliver package
-        uses: actions/upload-artifact@v2
-        if: env.UPLOAD_ARTIFACT == 'true' || contains(github.event.action, 'ssh')
-        with:
-          name: OpenWrt_package
-          path: ./artifact/package/
-
-      - name: Deliver firmware
-        uses: actions/upload-artifact@v2
-        if: env.UPLOAD_ARTIFACT == 'true' || contains(github.event.action, 'ssh')
-        with:
-          name: OpenWrt_firmware
-          path: ./lede/bin/targets/
-
-      - name: Upload release asset
-        if: github.event == 'release'
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.YOURTOKEN }}
-          file: ./artifact/firmware/*
-          tag: ${{ github.ref }}
-          file_glob: true
-
-
-#    - name: Test 
-#      run: go test -v .
-      - name: Upload firmware to cowtransfer
-        if: env.UPLOAD_COWTRANSFER == 'true' || contains(github.event.action, 'ssh')
-        run: |
-          ls -l
-          cd kernel_cancro
-          curl -fsSL git.io/file-transfer | sh
-          ./transfer cow --block 2621440 -s -p 64 --no-progress $FILETARNAME 2>&1 | tee cowtransfer.log
-          echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
-      - name: Upload firmware to WeTransfer
-        if: env.UPLOAD_WETRANSFER == 'true' || contains(github.event.action, 'ssh')
-        run: |
-          ls -l
-          cd kernel_cancro
-          cd AnyKernel3
-          curl -sL https://git.io/file-transfer | sh
-          ./transfer wet  -p 16 --no-progress kernel-cancro.zip 2>&1 | tee wetransfer.log
-          echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
-          
