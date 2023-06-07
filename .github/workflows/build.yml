@@ -74,7 +74,7 @@ jobs:
           
           make cyanogen_cancro_defconfig
           #cp ../cancro-kernel.config ./.config
-          cp ../dtc-lexer.l scripts/dtc
+          #cp ../dtc-lexer.l scripts/dtc
           cp ../dtc-parser.tab.c_shipped scripts/dtc
           cp ../dtc-lexer.lex.c_shipped scripts/dtc
           make -j1 V=s
