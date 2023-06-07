@@ -73,7 +73,7 @@ jobs:
       - name: Compile
         run: |
           ls -l
-          export CROSS_COMPILE=$(pwd)/Linaro-arm/bin/arm-eabi-"
+          export CROSS_COMPILE=$(pwd)/Linaro-arm/bin/arm-eabi-
           export ARCH=arm
           #export PATH="$(pwd)/arm-linux-androideabi-4.9/bin:${PATH}"
           cd kernel_cancro
