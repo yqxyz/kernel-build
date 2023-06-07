@@ -2,7 +2,7 @@
 #cd arch/arm/boot
 git clone https://github.com/JonasCardoso/AnyKernel3.git
 
-cp arch/arm/boot/zImage AnyKernel3/zImage
+cp arch/arm/boot/zImage-dtb AnyKernel3/zImage-dtb
 cp drivers/staging/prima/wlan.ko AnyKernel3/modules
 zipdirout="AnyKernel3"
 maintainer="jcg"
