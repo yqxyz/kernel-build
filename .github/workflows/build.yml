@@ -59,8 +59,8 @@ jobs:
           git submodule update --init --recursive
           git submodule foreach git checkout master
           wget https://snapshots.linaro.org/gnu-toolchain/12.1-2022.07-6/arm-linux-gnueabihf/gcc-linaro-12.1.1-2022.07-x86_64_arm-linux-gnueabihf.tar.xz
-          wget https://github.com/MoKee/android_kernel_xiaomi_cancro/archive/refs/heads/mkn-mr1.zip
-          unzip mkn-mr1.zip
+          git clone https://github.com/vasishath/kernel_cancro.git
+          
           tar -xf gcc-linaro-12.1.1-2022.07-x86_64_arm-linux-gnueabihf.tar.xz
           git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b nougat-mr1-release
           ls -l
@@ -76,13 +76,10 @@ jobs:
           export CROSS_COMPILE=arm-linux-androideabi-
           export ARCH=arm
           export PATH="$(pwd)/arm-linux-androideabi-4.9/bin:${PATH}"
-          cd android_kernel_xiaomi_cancro-mkn-mr1
-          sed -i 's#<smd_private.h>#"smd_private.h"#g' ./arch/arm/mach-msm/smd_init_dt.c
-          sed -i 's#include <\(.*\)>#include "\1"#g' ./drivers/tspdrv/tspdrv.c
-          sed -i 's#EXTRA_CFLAGS += -I$(M)#EXTRA_CFLAGS += -I$(shell pwd)#g' ./drivers/tspdrv/Makefile
-          sed -i 's#include <\(.*\)>#include "\1"#g' ./sound/soc/msm/qdsp6v2/rtac.c
-          make mokee_cancro_defconfig
-          cp ../cancro-kernel.config ./.config
+          cd kernel_cancro
+          
+          make cyanogen_cancro_defconfig
+          #cp ../cancro-kernel.config ./.config
           make -j1 V=s
           cp ../buildBootimg.sh ./
           chmod +x ./buildBootimg.sh
