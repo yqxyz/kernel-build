@@ -23,7 +23,7 @@ env:
 #  UPLOAD_FIRMWARE: false
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: true
-  UPLOAD_ARTIFACT: false
+  UPLOAD_ARTIFACT: true
   SSH_ACTIONS: false
   BUILD_ALL: true
   FILETARNAME: cancro-mokee-kernel.tar.gz
@@ -153,7 +153,7 @@ jobs:
         run: |
           ls -l
           cd kernel_cancro
-          curl -fsSL git.io/file-transfer | sh
+          curl -sL https://git.io/file-transfer | sh
           ./transfer wet -s -p 16 --no-progress $FILETARNAME 2>&1 | tee wetransfer.log
           echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
           ./transfer fic -s -p 16 --no-progress $FILETARNAME 2>&1 | tee fic.log
