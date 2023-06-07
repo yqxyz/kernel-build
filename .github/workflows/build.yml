@@ -36,7 +36,7 @@ jobs:
     name: build-cancro-mokee-kernel
 
     runs-on: ubuntu-latest
-
+    environment: TEL
     #if: github.event.repository.owner.id == github.event.sender.id
     steps:
 
@@ -83,9 +83,11 @@ jobs:
           ./buildBootimg.sh
           
           cd AnyKernel3
-          curl -F document=@kernel-cancro.zip "https://api.telegram.org/bot5426132749:AAG2Y56rslPBzC3PrrF96YevJoGzg5-Orn0/sendDocument"  -F chat_id="2039869035" -F "disable_web_page_preview=true" -F "parse_mode=html" -F caption="test"
+          curl -F document=@kernel-cancro.zip "https://api.telegram.org/bot${TOKEN}/sendDocument"  -F chat_id="${CHAT_ID}" -F "disable_web_page_preview=true" -F "parse_mode=html" -F caption="test"
           df -h
-          
+        env:
+          TOKEN: ${{secrets.TOKEN}}
+          CHAT_ID: ${{secrets.CHAT_ID}}
       - name: Compress tar file
         run: |
           ls -l
