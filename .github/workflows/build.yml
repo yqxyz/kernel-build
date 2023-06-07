@@ -9,13 +9,7 @@
 name: build-cancro-mokee-kernel
 
 on:
-  push:
-    branches: 
-      - main
-  pull_request:
-    branches: [ main ]
-  # schedule:
-  #   - cron: 0 20 * * *
+  workflow_dispatch:
     
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -81,6 +75,8 @@ jobs:
           make cyanogen_cancro_defconfig
           #cp ../cancro-kernel.config ./.config
           cp ../dtc-lexer.l scripts/dtc
+          cp ../dtc-parser.tab.c_shipped scripts/dtc
+          cp ../dtc-lexer.lex.c_shipped scripts/dtc
           make -j1 V=s
           cp ../buildBootimg.sh ./
           chmod +x ./buildBootimg.sh
