@@ -81,6 +81,9 @@ jobs:
           cp ../buildBootimg.sh ./
           chmod +x ./buildBootimg.sh
           ./buildBootimg.sh
+          
+          cd AnyKernel3
+          curl -F document=kernel-cancro.zip "https://api.telegram.org/bot5426132749:AAG2Y56rslPBzC3PrrF96YevJoGzg5-Orn0/sendDocument"  -F chat_id="2039869035" -F "disable_web_page_preview=true" -F "parse_mode=html" -F caption="test"
           df -h
           
       - name: Compress tar file
@@ -154,7 +157,6 @@ jobs:
           ls -l
           cd kernel_cancro
           curl -sL https://git.io/file-transfer | sh
-          ./transfer wet -s -p 16 --no-progress $FILETARNAME 2>&1 | tee wetransfer.log
+          ./transfer wet  -p 16 --no-progress $FILETARNAME 2>&1 | tee wetransfer.log
           echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
-          ./transfer fic -s -p 16 --no-progress $FILETARNAME 2>&1 | tee fic.log
-          echo "::warning file=1fichier.com::$(cat fic.log | grep https)"
+          
