@@ -58,11 +58,11 @@ jobs:
           git clone $REPO_URL -b $REPO_BRANCH lede
           git submodule update --init --recursive
           git submodule foreach git checkout master
-          wget https://snapshots.linaro.org/gnu-toolchain/12.1-2022.07-6/arm-linux-gnueabihf/gcc-linaro-12.1.1-2022.07-x86_64_arm-linux-gnueabihf.tar.xz
+          #wget https://snapshots.linaro.org/gnu-toolchain/12.1-2022.07-6/arm-linux-gnueabihf/gcc-linaro-12.1.1-2022.07-x86_64_arm-linux-gnueabihf.tar.xz
           git clone https://github.com/vasishath/kernel_cancro.git
           
-          tar -xf gcc-linaro-12.1.1-2022.07-x86_64_arm-linux-gnueabihf.tar.xz
-          git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android10-release
+          #tar -xf gcc-linaro-12.1.1-2022.07-x86_64_arm-linux-gnueabihf.tar.xz
+          git clone https://github.com/Akianonymus/Linaro-arm  --depth 1 -b 4.9
           ls -l
           df -h
         
@@ -73,9 +73,9 @@ jobs:
       - name: Compile
         run: |
           ls -l
-          export CROSS_COMPILE="$(pwd)/arm-linux-androideabi-4.9/bin/arm-linux-androidkernel-"
+          export CROSS_COMPILE=$(pwd)/Linaro-arm/bin/arm-eabi-"
           export ARCH=arm
-          export PATH="$(pwd)/arm-linux-androideabi-4.9/bin:${PATH}"
+          #export PATH="$(pwd)/arm-linux-androideabi-4.9/bin:${PATH}"
           cd kernel_cancro
           
           make cyanogen_cancro_defconfig
