@@ -86,7 +86,7 @@ jobs:
       - name: Compress tar file
         run: |
           ls -l
-          cd android_kernel_xiaomi_cancro-mkn-mr1
+          cd kernel_cancro
           echo "======================="
           echo "Space usage:"
           echo "======================="
@@ -144,7 +144,7 @@ jobs:
         if: env.UPLOAD_COWTRANSFER == 'true' || contains(github.event.action, 'ssh')
         run: |
           ls -l
-          cd android_kernel_xiaomi_cancro-mkn-mr1
+          cd kernel_cancro
           curl -fsSL git.io/file-transfer | sh
           ./transfer cow --block 2621440 -s -p 64 --no-progress $FILETARNAME 2>&1 | tee cowtransfer.log
           echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
@@ -152,7 +152,7 @@ jobs:
         if: env.UPLOAD_WETRANSFER == 'true' || contains(github.event.action, 'ssh')
         run: |
           ls -l
-          cd android_kernel_xiaomi_cancro-mkn-mr1
+          cd kernel_cancro
           curl -fsSL git.io/file-transfer | sh
           ./transfer wet -s -p 16 --no-progress $FILETARNAME 2>&1 | tee wetransfer.log
           echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
