@@ -73,7 +73,7 @@ jobs:
       - name: Compile
         run: |
           ls -l
-          export CROSS_COMPILE=arm-linux-androideabi-
+          export CROSS_COMPILE="$(pwd)/arm-linux-androideabi-4.9/bin/arm-linux-androidkernel-"
           export ARCH=arm
           export PATH="$(pwd)/arm-linux-androideabi-4.9/bin:${PATH}"
           cd kernel_cancro
