@@ -18,7 +18,7 @@ ToolchainName="GCC"
 romversion="MK"
 androidversion="TEN"
 customkernel="nfsCifsKernel"
-zipfile="${customkernel}-${name}-${variant}-${release}-${ToolchainName}-${androidversion}-${romversion}.zip"
+zipfile="kernel-cancro.zip"
 
 echo "maintainer=${maintainer}" >> ${zipdirout}/device.prop
 echo "customkernel=${customkernel}" >> ${zipdirout}/device.prop
