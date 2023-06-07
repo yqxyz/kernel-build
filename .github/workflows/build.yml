@@ -23,7 +23,7 @@ env:
 #  UPLOAD_FIRMWARE: false
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: true
-  UPLOAD_ARTIFACT: true
+  UPLOAD_ARTIFACT: false
   SSH_ACTIONS: false
   BUILD_ALL: true
   FILETARNAME: cancro-mokee-kernel.tar.gz
