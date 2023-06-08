@@ -53,7 +53,7 @@ jobs:
           cp ../_.config ./.config
           cp ../memcontrol.c mm
           cp ../dtc-parser.tab.c_shipped scripts/dtc
-          #cp ../dtc-lexer.lex.c_shipped scripts/dtc
+          cp ../cpuset.c kernel
           make -j1 V=s
           cp ../buildBootimg.sh ./
           chmod +x ./buildBootimg.sh
