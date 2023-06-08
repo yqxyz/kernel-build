@@ -18,7 +18,7 @@ jobs:
       - name: Checkout kernel
         uses: actions/checkout@v3
         with:
-          repository: crdroidandroid/android_kernel_xiaomi_lavender.git
+          repository: crdroidandroid/android_kernel_xiaomi_lavender
           
           path: kernel
     
