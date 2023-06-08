@@ -31,11 +31,7 @@ jobs:
         
       - name: Clone source code
         run: |
-          df -hT $PWD
-          git clone $REPO_URL -b $REPO_BRANCH lede
-          git submodule update --init --recursive
-          git submodule foreach git checkout master
-          #wget https://snapshots.linaro.org/gnu-toolchain/12.1-2022.07-6/arm-linux-gnueabihf/gcc-linaro-12.1.1-2022.07-x86_64_arm-linux-gnueabihf.tar.xz
+          
           git clone https://github.com/vasishath/kernel_cancro.git --depth 1
           
           #tar -xf gcc-linaro-12.1.1-2022.07-x86_64_arm-linux-gnueabihf.tar.xz
