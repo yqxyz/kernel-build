@@ -32,7 +32,7 @@ jobs:
       - name: Clone source code
         run: |
           
-          git clone https://github.com/vasishath/kernel_cancro.git --depth 1
+          git clone https://github.com/vasishath/kernel_cancro.git --depth 1 -b LA.BR.1.3.6_rb1.19
           
           #tar -xf gcc-linaro-12.1.1-2022.07-x86_64_arm-linux-gnueabihf.tar.xz
           git clone https://github.com/Akianonymus/Linaro-arm  --depth 1 -b 4.9
