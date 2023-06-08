@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: crdroidandroid/android_kernel_xiaomi_lavender.git
-          ref: master
+          ref: 13.0
           path: kernel
     
       - name: build
