@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: TEL
     # Docker Hub image that `container-job` executes in
-    container: z4nyx/docker:latest
+    container: nexgang/ubuntu:latest
     steps:
       # Downloads a copy of the code in your repository before running CI tests
       - name: Check out repository code
@@ -19,15 +19,15 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: ImSpiDy/kernel_xiaomi_lavender-4.19
-          ref: ps
+          ref: X2B
           path: kernel
     
       - name: build
         run: |
           cd kernel
        
-          cp ../build2.sh .
-          bash build2.sh
+          cp ../S0NiX.sh .
+          bash S0NiX.sh
         env:
           token: ${{secrets.TOKEN}}
           chat_id: ${{secrets.CHAT_ID}}
