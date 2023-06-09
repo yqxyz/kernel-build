@@ -1,4 +1,4 @@
-name: build-kernel2
+name: build-S0NiX
 
 on:
   workflow_dispatch:
