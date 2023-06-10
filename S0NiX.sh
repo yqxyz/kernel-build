@@ -15,7 +15,7 @@ DEVICE=Lavender
 
 # Kernel Name and Version
 ZIPNAME=S0NiX
-VERSION=v2.0-Beta-CLO
+VERSION=v2.0-CLO
 
 # Kernel Defconfig
 DEFCONFIG=lavender_defconfig
