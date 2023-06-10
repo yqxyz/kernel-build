@@ -50,9 +50,9 @@ function finerr() {
 # Compile plox
 function compile() {
     make O=out ARCH=arm64 lavender_defconfig
-    cp ../imp_docker.config out/.config
-    cp ../impMakefile kernel/Makefile
-    cp ../impxt_qtaguid.c net/netfilter/xt_qtaguid.c   
+    cp ../.config out/.config
+    #cp ../impMakefile kernel/Makefile
+    #cp ../impxt_qtaguid.c net/netfilter/xt_qtaguid.c   
     make -j$(nproc --all) O=out \
                     ARCH=arm64 \
                     CC=clang \
