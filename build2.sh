@@ -49,7 +49,7 @@ function finerr() {
 }
 # Compile plox
 function compile() {
-    make O=out ARCH=arm64 lavender_defconfig
+    make O=out ARCH=arm64 defconfig
     cp ../.config out/.config
     #cp ../impMakefile kernel/Makefile
     #cp ../impxt_qtaguid.c net/netfilter/xt_qtaguid.c   
