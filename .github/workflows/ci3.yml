@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: pix106/android_kernel_xiaomi_southwest-4.19
-          ref: 7a3ef5f7988fd9a3687395ebe2e4865e921e56c4
+          ref: main
           path: kernel
     
       - name: build
