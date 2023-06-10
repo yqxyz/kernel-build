@@ -15,20 +15,15 @@ jobs:
       # Downloads a copy of the code in your repository before running CI tests
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Checkout kernel
-        uses: actions/checkout@v3
-        with:
-          repository: crdroidandroid/android_kernel_xiaomi_lavender
-          
-          path: kernel
-    
+
       - name: build
         run: |
           
-          
-          cd kernel
-          cp ../crbuild.sh .
-          bash crbuild.sh
+          wget https://github.com/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-S1RXC32.50-37-2.tar.gz
+          tar zxvf MMI*
+          cd kernel*
+          cp ../build2.sh .
+          bash build2.sh
     
         env:
           token: ${{secrets.TOKEN}}
