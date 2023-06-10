@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: ImSpiDy/kernel_xiaomi_lavender-4.19
-          ref: X2
+          ref: X1
           path: kernel
     
       - name: build
