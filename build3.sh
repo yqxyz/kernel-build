@@ -17,7 +17,7 @@ DEVICE=Lavender
 VERSION=X1
 
 # Kernel Defconfig
-DEFCONFIG=lavender_defconfig
+DEFCONFIG=defconfig
 
 # Files
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
@@ -177,6 +177,7 @@ START=$(date +"%s")
 	
 	# Compile
 	make O=out CC=clang ARCH=arm64 ${DEFCONFIG}
+ cp ../.config out
 	if [ -d ${KERNEL_DIR}/clang ];
 	   then
 	       make -kj$(nproc --all) O=out \
