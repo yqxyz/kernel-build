@@ -22,8 +22,8 @@ jobs:
           wget https://github.com/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-S1RXC32.50-37-2.tar.gz
           tar zxvf MMI*
           cd kernel*
-          cp ../build2.sh .
-          bash build2.sh
+          cp ../build3.sh .
+          bash build3.sh
     
         env:
           token: ${{secrets.TOKEN}}
