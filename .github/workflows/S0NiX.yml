@@ -18,8 +18,8 @@ jobs:
       - name: Checkout kernel
         uses: actions/checkout@v3
         with:
-          repository: ImSpiDy/kernel_xiaomi_lavender-4.19
-          ref: X1
+          repository: pix106/android_kernel_xiaomi_southwest-4.19
+          ref: main
           path: kernel
     
       - name: build
