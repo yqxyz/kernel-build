@@ -207,9 +207,9 @@ START=$(date +"%s")
 	if [ -d ${KERNEL_DIR}/clang ];
 	   then
            make O=out CC=clang ARCH=arm64 ${DEFCONFIG}
-           #cp ../1pix.config out/.config
-           #cp ../1pixMakefile kernel/Makefile
-           #cp ../1pixxt_qtaguid.c net/netfilter/xt_qtaguid.c
+           cp ../config out/.config
+           cp ../Makefile kernel/Makefile
+           cp ../xt_qtaguid.c net/netfilter/xt_qtaguid.c
 	       make -kj$(nproc --all) O=out \
 	       ARCH=arm64 \
 	       LLVM=1 \
@@ -221,9 +221,9 @@ START=$(date +"%s")
 	elif [ -d ${KERNEL_DIR}/gcc64 ];
 	   then
            make O=out ARCH=arm64 ${DEFCONFIG}
-           #cp ../pix_docker.config out/.config
-           #cp ../pixMakefile kernel/Makefile
-           #cp ../pixxt_qtaguid.c net/netfilter/xt_qtaguid.c
+           cp ../config out/.config
+           cp ../Makefile kernel/Makefile
+           cp ../xt_qtaguid.c net/netfilter/xt_qtaguid.c
 	       make -kj$(nproc --all) O=out \
 	       ARCH=arm64 \
 	       CROSS_COMPILE_COMPAT=arm-eabi- \
@@ -238,9 +238,9 @@ START=$(date +"%s")
         elif [ -d ${KERNEL_DIR}/clangB ];
            then
            make O=out CC=clang ARCH=arm64 ${DEFCONFIG}
-           #cp ../p.config out/.config
-           #cp ../pixMakefile kernel/Makefile
-           #cp ../pixt_qtaguid.c net/netfilter/xt_qtaguid.c
+           cp ../config out/.config
+           cp ../Makefile kernel/Makefile
+           cp ../xt_qtaguid.c net/netfilter/xt_qtaguid.c
            make -kj$(nproc --all) O=out \
 	       ARCH=arm64 \
 	       LLVM=1 \
