@@ -142,9 +142,9 @@ START=$(date +"%s")
 	
 	# Compile
 	make O=out CC=clang ARCH=arm64 ${DEFCONFIG}
-    cp ../xt_qtaguid.c net/netfilter
-    cp ../Makefile kernel
-    cp ../config out
+        cp ../xt_qtaguid.c net/netfilter
+        cp ../Makefile kernel
+        cp ../config out/.config
 	if [ -d ${KERNEL_DIR}/clang ];
 	   then
 	       make -kj$(nproc --all) O=out \
