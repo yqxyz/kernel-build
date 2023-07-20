@@ -18,8 +18,8 @@ jobs:
       - name: Checkout kernel
         uses: actions/checkout@v3
         with:
-          repository: ArrowOS-Devices/android_kernel_xiaomi_sdm660
-          ref: arrow-13.1
+          repository: gyhxrr31/NekoHunter_4.19
+          ref: main
           path: kernel
     
       - name: build
