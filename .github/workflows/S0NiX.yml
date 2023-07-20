@@ -1,4 +1,4 @@
-name: build-S0NiX
+name: build-S0NiX2
 
 on:
   workflow_dispatch:
@@ -18,16 +18,16 @@ jobs:
       - name: Checkout kernel
         uses: actions/checkout@v3
         with:
-          repository: ImSpiDy/kernel_xiaomi_lavender-4.19
-          ref: 13-Retro-EroFs
+          repository: ArrowOS-Devices/android_kernel_xiaomi_sdm660
+          ref: arrow-13.1
           path: kernel
     
       - name: build
         run: |
           cd kernel
        
-          cp ../S0NiX.sh .
-          bash S0NiX.sh
+          cp ../S0NiX2.sh .
+          bash S0NiX2.sh
         env:
           token: ${{secrets.TOKEN}}
           chat_id: ${{secrets.CHAT_ID}}
