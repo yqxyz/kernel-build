@@ -18,7 +18,7 @@ jobs:
       - name: Checkout kernel
         uses: actions/checkout@v3
         with:
-          repository: https://github.com/ArrowOS-Devices/android_kernel_xiaomi_sdm660.git
+          repository: https://github.com/ArrowOS-Devices/android_kernel_xiaomi_sdm660
           ref: main
           path: kernel
     
