@@ -18,8 +18,8 @@ jobs:
       - name: Checkout kernel
         uses: actions/checkout@v3
         with:
-          repository: ArrowOS-Devices/android_kernel_xiaomi_sdm660
-          ref: arrow-13.1
+          repository: ImSpiDy/kernel_xiaomi_lavender-4.19
+          ref: X2
           path: kernel
     
       - name: build
