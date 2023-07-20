@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: ArrowOS-Devices/android_kernel_xiaomi_sdm660
-          ref: main
+          ref: arrow-13.1
           path: kernel
     
       - name: build
