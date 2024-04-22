@@ -40,7 +40,7 @@ FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-${TANGGAL}.zip
 
 ##----------------------------------------------------------##
 # Specify compiler - nexus, proton, azure, aosp
-COMPILER=aosp
+COMPILER=azure
 
 ##----------------------------------------------------------##
 # Clone ToolChain
