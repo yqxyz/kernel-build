@@ -1,4 +1,4 @@
-name: build-S0NiX2
+name: build
 
 on:
   workflow_dispatch:
@@ -21,8 +21,8 @@ jobs:
           wget -q https://github.com/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-S3RXC32.33-8-25.tar.gz
           tar -xf MMI*
           cd kernel-m*
-          cp ../S0NiX2.sh .
-          bash S0NiX2.sh
+          cp ../build.sh .
+          bash build.sh
         env:
           token: ${{secrets.TOKEN}}
           chat_id: ${{secrets.CHAT_ID}}
