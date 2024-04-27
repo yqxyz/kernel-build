@@ -180,7 +180,8 @@ START=$(date +"%s")
 ##----------------------------------------------------------------##
 function zipping() {
 	# Copy Files To AnyKernel3 Zip
-	cp -r out AnyKernel3
+	ls out
+	cp -r out/arch/arm64/boot AnyKernel3
 	
 	# Zipping and Push Kernel
 	cd AnyKernel3 || exit 1
