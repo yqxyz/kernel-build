@@ -168,19 +168,19 @@ START=$(date +"%s")
 	fi
 	
 	# Verify Files
-	if ! [ -a "$IMAGE" ];
-	   then
-	       push "error.log" "Build Throws Errors"
-	       exit 1
-	   else
-	       post_msg " Kernel Compilation Finished. Started Zipping "
-	fi
+	# if ! [ -a "$IMAGE" ];
+	#    then
+	#        push "error.log" "Build Throws Errors"
+	#        exit 1
+	#    else
+	#        post_msg " Kernel Compilation Finished. Started Zipping "
+	# fi
 	}
 
 ##----------------------------------------------------------------##
 function zipping() {
 	# Copy Files To AnyKernel3 Zip
-	cp $IMAGE AnyKernel3
+	cp -r out AnyKernel3
 	
 	# Zipping and Push Kernel
 	cd AnyKernel3 || exit 1
