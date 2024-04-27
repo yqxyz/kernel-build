@@ -65,7 +65,7 @@ function cloneTC() {
 	post_msg " Cloning Aosp Clang ToolChain "
         mkdir aosp-clang
         cd aosp-clang || exit
-	wget -q https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r510928.tar.gz
+	wget -q https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/e532342f30eadb954c96d19ca6a0edf89a5c65bc/clang-r383902b1.tar.gz
         tar -xf clang*
         cd .. || exit
 	git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.git --depth=1 gcc
