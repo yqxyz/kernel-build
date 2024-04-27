@@ -145,6 +145,7 @@ START=$(date +"%s")
 	# make O=out CC=clang ARCH=arm64 ${DEFCONFIG}
         #cp ../xt_qtaguid.c net/netfilter
         #cp ../Makefile kernel
+		mkdir out
         cp ../config out/.config
 	if [ -d ${KERNEL_DIR}/clang ];
 	   then
