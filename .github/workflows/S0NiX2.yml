@@ -13,6 +13,14 @@ jobs:
     container: nexgang/ubuntu:latest
     steps:
       Downloads
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Checkout kernel
+        uses: actions/checkout@v3
+        with:
+          repository: ArrowOS-Devices/android_kernel_xiaomi_sdm660
+          ref: arrow-13.1
+          path: kernel
       - name: build
         run: |
           wget -q https://github.com/MotorolaMobilityLLC/kernel-msm/archive/refs/tags/MMI-S3RXC32.33-8-25.tar.gz
