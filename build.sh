@@ -10,15 +10,15 @@ KERNEL_DIR="$(pwd)"
 
 ##----------------------------------------------------------##
 # Device Name and Model
-MODEL=xiaomi
-DEVICE=Lavender
+MODEL=
+DEVICE=
 
 # Kernel Name and Version
 ZIPNAME=kernel
 VERSION=v1.0
 
 # Kernel Defconfig
-DEFCONFIG=lavender_defconfig
+DEFCONFIG=defconfig
 
 # Files
 IMAGE=$(pwd)/out/arch/arm64/boot/Image
@@ -142,11 +142,11 @@ START=$(date +"%s")
 	
 	# Compile
  	#cp ../wlan_extscan_api.c drivers/staging/qca-wifi-host-cmn/umac/scan/dispatcher/src
-	cp ../config arch/arm64/configs/config
-	 make O=out CC=clang ARCH=arm64 config
+	# make O=out CC=clang ARCH=arm64 defconfig
+    mkdir out
+	cp ../config out/.config
         #cp ../xt_qtaguid.c net/netfilter
         #cp ../Makefile kernel
-		#mkdir out
 	if [ -d ${KERNEL_DIR}/clang ];
 	   then
 	       make -kj$(nproc --all) O=out \
@@ -166,7 +166,14 @@ START=$(date +"%s")
 	       CROSS_COMPILE_COMPAT=arm-linux-androideabi- \
 	       V=$VERBOSE 2>&1 | tee error.log
 	fi
-	
+	make dtbs -j$(nproc --all) O=out \
+	       ARCH=arm64 \
+	       LLVM=1 \
+	       LLVM_IAS=1 \
+	       CLANG_TRIPLE=aarch64-linux-gnu- \
+	       CROSS_COMPILE=aarch64-linux-android- \
+	       CROSS_COMPILE_COMPAT=arm-linux-androideabi- \
+	       V=$VERBOSE 2>&1 | tee error.log
 	# Verify Files
 	# if ! [ -a "$IMAGE" ];
 	#    then
