@@ -10,18 +10,18 @@ KERNEL_DIR="$(pwd)"
 
 ##----------------------------------------------------------##
 # Device Name and Model
-MODEL=Xiaomi
+MODEL=xiaomi
 DEVICE=Lavender
 
 # Kernel Name and Version
-ZIPNAME=S0NiX
-VERSION=v1.0-CLO
+ZIPNAME=kernel
+VERSION=v1.0
 
 # Kernel Defconfig
 DEFCONFIG=lavender_defconfig
 
 # Files
-IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
+IMAGE=$(pwd)/out/arch/arm64/boot/Image
 
 # Verbose Build
 VERBOSE=0
@@ -142,11 +142,11 @@ START=$(date +"%s")
 	
 	# Compile
  	#cp ../wlan_extscan_api.c drivers/staging/qca-wifi-host-cmn/umac/scan/dispatcher/src
-	# make O=out CC=clang ARCH=arm64 ${DEFCONFIG}
+	cp ../config arch/arm64/configs/config
+	 make O=out CC=clang ARCH=arm64 config
         #cp ../xt_qtaguid.c net/netfilter
         #cp ../Makefile kernel
-		mkdir out
-        cp ../config out/.config
+		#mkdir out
 	if [ -d ${KERNEL_DIR}/clang ];
 	   then
 	       make -kj$(nproc --all) O=out \
