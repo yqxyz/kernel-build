@@ -12,7 +12,8 @@ jobs:
     # Docker Hub image that `container-job` executes in
     container: nexgang/ubuntu:latest
     steps:
-      #Downloads
+      - name: Check out repository code
+        uses: actions/checkout@v3      
       - name: Check out repository code
         uses: actions/checkout@v3
         with:
