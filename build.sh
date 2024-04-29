@@ -166,14 +166,6 @@ START=$(date +"%s")
 	       CROSS_COMPILE_COMPAT=arm-linux-androideabi- \
 	       V=$VERBOSE 2>&1 | tee error.log
 	fi
-	make dtbs -j$(nproc --all) O=out \
-	       ARCH=arm64 \
-	       LLVM=1 \
-	       LLVM_IAS=1 \
-	       CLANG_TRIPLE=aarch64-linux-gnu- \
-	       CROSS_COMPILE=aarch64-linux-android- \
-	       CROSS_COMPILE_COMPAT=arm-linux-androideabi- \
-	       V=$VERBOSE 2>&1 | tee error.log
 	# Verify Files
 	# if ! [ -a "$IMAGE" ];
 	#    then
